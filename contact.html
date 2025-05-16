@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us - BORCELLE</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+  <div class="animated-bg-container"> <!-- Container for background shapes -->
+    <!-- JS will add shapes here -->
+  </div>
+
+  <header class="navbar">
+    <div class="logo">BORCELLE</div>
+    <button class="menu-toggle" aria-label="Toggle navigation">☰</button>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="services.html">Courses</a></li>
+        <li><a href="shop.html">Shop</a></li>
+        <li><a href="contact.html" class="active">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="page-hero" data-aos="fade-in">
+        <div class="container">
+            <h1>Get In Touch</h1>
+            <p style="max-width: 700px; margin:10px auto 0;">We'd love to hear from you! Whether you have a question about our products, courses, or just want to say hello.</p>
+        </div>
+    </section>
+
+    <section class="contact-page-grid section-padding">
+      <div class="container" style="display:flex; flex-wrap:wrap; gap: 40px;">
+        <section class="contact-details-area" data-aos="fade-right">
+          <h2>Contact Information</h2>
+          <p>Please fill out the form to send us an email, or reach out to us via the details below.</p>
+          <p style="margin-top:20px;"><strong><i class="fas fa-envelope fa-fw" style="color:var(--color-primary); margin-right:8px;"></i>E-mail:</strong> <a href="mailto:hello@borcelle.com">hello@borcelle.com</a></p>
+          <p><strong><i class="fas fa-phone fa-fw" style="color:var(--color-primary); margin-right:8px;"></i>Phone:</strong> <a href="tel:+1234567890">+1 (234) 567-890</a></p>
+          <p><strong><i class="fas fa-map-marker-alt fa-fw" style="color:var(--color-primary); margin-right:8px;"></i>Address:</strong> 123 Beauty Lane, Wellness City, CA 90210</p>
+          <div class="footer-socials" style="margin-top:20px; justify-content:flex-start;">
+                <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest-p"></i></a>
+            </div>
+        </section>
+        <section class="contact-form-area" data-aos="fade-left" data-aos-delay="100">
+          <form id="contactFormBorcelle">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" placeholder="Your Name" required>
+
+            <label for="email">E-mail</label>
+            <input type="email" id="email" name="email" placeholder="Your E-mail" required>
+
+            <label for="subject">Subject</label>
+            <input type="text" id="subject" name="subject" placeholder="Subject">
+
+            <label for="message">Message</label>
+            <textarea id="message" name="message" placeholder="Your Message" required></textarea>
+
+            <button type="submit" class="btn">Send Message</button>
+          </form>
+        </section>
+      </div>
+    </section>
+
+    <section class="map-section" data-aos="fade-in" style="height: 400px; margin-top: 50px;">
+        <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.521260322076!2d106.81959031426918!3d-6.194741995514915!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f4225410b351%3A0xba18c9a990c5950d!2sNational%20Monument!5e0!3m2!1sen!2sid!4v1600000000000!5m2!1sen!2sid"
+            width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </section>
+
+  </main>
+  <footer class="site-footer">
+      <!-- ... (فوٹر کا وہی HTML کوڈ جو index.html میں ہے) ... -->
+  </footer>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+<script src="script.js"></script>
+</body>
+</body>
+</html>

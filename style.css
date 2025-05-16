@@ -1,0 +1,532 @@
+/* === Google Fonts === */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;700&display=swap');
+
+/* === CSS Variables === */
+:root {
+    --font-primary: 'Montserrat', sans-serif;
+    --font-secondary: 'Playfair Display', serif;
+
+    --color-bg: #fdfcfb; /* Even lighter, almost white */
+    --color-text: #4a4a4a;
+    --color-primary: #b1977d; /* Muted gold/brown - BORCELLE primary */
+    --color-primary-dark: #9a7f65;
+    --color-secondary: #a88fac; /* Muted lavender/rose - BORCELLE secondary */
+    --color-secondary-dark: #8f7393;
+    --color-white: #ffffff;
+    --color-black: #1c1c1c;
+    --color-border: #e0e0e0;
+    --color-input-bg: #f9f9f9;
+    --color-secondary-light: #f7f2fa; /* Very light lavender for backgrounds */
+
+
+    --shadow-light: 0 5px 15px rgba(0, 0, 0, 0.06);
+    --shadow-medium: 0 8px 25px rgba(0, 0, 0, 0.1);
+    --shadow-card-hover: 0 10px 30px rgba(var(--color-primary-rgb, 177, 151, 125), 0.15);
+
+
+    --border-radius-sm: 4px;
+    --border-radius-md: 8px;
+
+    --transition-main: 0.3s ease-in-out;
+    --transition-fast: 0.2s ease-in-out;
+    --transition-smooth: 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+:root { --color-primary-rgb: 177, 151, 125; } /* For RGBA shadows */
+
+/* === Basic Reset & Global Styles === */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; font-size: 16px; }
+body {
+    font-family: var(--font-primary);
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    line-height: 1.7;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    perspective: 1500px; /* Global perspective for subtle 3D section transitions */
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-secondary);
+    color: var(--color-text);
+    font-weight: 700;
+    line-height: 1.3;
+    margin-bottom: 0.85rem;
+}
+h1 { font-size: clamp(2.4rem, 5vw, 3.5rem); }
+h2 { font-size: clamp(2rem, 4vw, 2.8rem); }
+h3 { font-size: clamp(1.5rem, 3vw, 2rem); }
+
+p { margin-bottom: 1.2rem; }
+a { text-decoration: none; color: var(--color-primary); transition: color var(--transition-main); }
+a:hover { color: var(--color-primary-dark); }
+img { max-width: 100%; height: auto; display: block; }
+ul { list-style: none; }
+
+.container {
+    width: 90%;
+    max-width: 1180px; /* Slightly increased max-width */
+    margin: 0 auto;
+    position: relative; /* For z-indexing content above particles */
+    z-index: 2;
+}
+
+.section-padding { padding: 90px 0; }
+.section-title { text-align: center; margin-bottom: 60px; font-size: 2.8rem; }
+.section-title::after {
+    content: ''; display: block; width: 70px; height: 3px;
+    background-color: var(--color-primary); margin: 12px auto 0;
+}
+.text-center { text-align: center; }
+
+/* === Particle Canvas Styling === */
+section[data-particle-bg], header[data-particle-bg] {
+    position: relative; /* Crucial for particle canvas positioning */
+    overflow: hidden; /* Prevent particles from spilling out visually, though they are behind */
+}
+div[id$="-borcelle-particles"] { /* Target the divs we create for particles.js */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0; /* Behind all other direct children of the section */
+}
+/* particles.js creates a canvas element *inside* the div we provide.
+   This canvas itself also gets inline styles for position:absolute. */
+.particles-js-canvas-el {
+    opacity: 0.6; /* Default opacity for particles */
+}
+body.dark-theme-borcelle .particles-js-canvas-el { /* If you implement a dark theme for Borcelle */
+    opacity: 0.4;
+}
+
+
+/* === Buttons === */
+.btn {
+    display: inline-block;
+    padding: 13px 30px;
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    border-radius: var(--border-radius-sm);
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    transition: all var(--transition-main);
+    border: 2px solid transparent;
+    cursor: pointer;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+}
+.btn:hover {
+    background-color: var(--color-primary-dark);
+    transform: translateY(-3px) scale(1.03) perspective(300px) translateZ(5px);
+    box-shadow: var(--shadow-card-hover);
+}
+.btn-secondary {
+    background-color: var(--color-secondary);
+    border-color: var(--color-secondary);
+}
+.btn-secondary:hover {
+    background-color: var(--color-secondary-dark);
+    border-color: var(--color-secondary-dark);
+}
+.btn-outline {
+    background-color: transparent;
+    color: var(--color-primary);
+    border-color: var(--color-primary);
+}
+.btn-outline:hover {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+}
+
+/* === Navbar === */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 30px;
+    background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white */
+    border-bottom: 1px solid var(--color-border);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    transition: box-shadow var(--transition-main), background-color var(--transition-main);
+    backdrop-filter: blur(10px);
+}
+.navbar.scrolled {
+    box-shadow: var(--shadow-medium);
+    background-color: rgba(255, 255, 255, 0.95);
+}
+.navbar .logo {
+    font-family: var(--font-secondary);
+    font-size: 1.9rem;
+    font-weight: bold;
+    color: var(--color-text);
+    letter-spacing: 1px;
+}
+.navbar nav ul { display: flex; }
+.navbar nav ul li { margin: 0 15px; }
+.navbar nav ul li a {
+    color: var(--color-text);
+    padding: 10px 15px;
+    font-weight: 500;
+    position: relative;
+    font-size: 0.95rem;
+    transition: color var(--transition-main), transform var(--transition-fast);
+}
+.navbar nav ul li a:hover {
+    color: var(--color-primary);
+    transform: translateY(-2px);
+}
+.navbar nav ul li a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 2px;
+    background-color: var(--color-primary);
+    transition: width var(--transition-main);
+}
+.navbar nav ul li a:hover::after,
+.navbar nav ul li a.active::after {
+    width: 100%;
+}
+.navbar nav ul li a.active { color: var(--color-primary); font-weight: 600; }
+
+.menu-toggle { display: none; font-size: 1.8rem; background: none; border: none; color: var(--color-text); cursor: pointer; z-index: 1001;}
+
+
+/* === Hero Section (Index Page) === */
+.hero-section-home {
+    height: 95vh;
+    min-height: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--color-white);
+    background: linear-gradient(rgba(60,45,30,0.3), rgba(60,45,30,0.5)), url('Untitled design (2).png') no-repeat center center; /* Use a relevant image */
+    background-size: cover;
+    position: relative; /* For particles */
+    background-attachment: fixed;
+    transform-style: preserve-3d; /* For 3D effects on content */
+}
+.hero-content-home { max-width: 750px; transform: translateZ(50px); } /* Pop content forward */
+.hero-content-home h1 {
+    font-size: clamp(2.8rem, 6vw, 4.5rem);
+    color: var(--color-white);
+    margin-bottom: 1.5rem;
+    text-shadow: 2px 3px 6px rgba(0,0,0,0.4);
+}
+.hero-content-home p {
+    font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+    margin-bottom: 2.5rem;
+    color: rgba(255,255,255,0.95);
+    line-height: 1.8;
+}
+
+/* === General Page Hero (About, Services, etc.) === */
+.page-hero {
+    padding: 70px 0;
+    text-align: center;
+    background-color: var(--color-secondary-light);
+    border-bottom: 1px solid var(--color-border);
+    position: relative; /* For particles */
+    transform-style: preserve-3d;
+}
+.page-hero .container { transform: translateZ(30px); }
+.page-hero h1 {
+    font-size: 3rem;
+    color: var(--color-primary);
+}
+
+/* Card Base for 3D */
+.product-card-shop, .course-promo-card, .team-member-card, .testimonial-card-home, .about-content-card {
+    transform-style: preserve-3d;
+    transition: transform var(--transition-smooth), box-shadow var(--transition-smooth);
+}
+.product-card-shop:hover, .course-promo-card:hover, .team-member-card:hover, .testimonial-card-home:hover, .about-content-card:hover {
+    transform: translateY(-10px) perspective(1000px) rotateX(5deg) rotateY(-3deg) scale(1.03);
+    box-shadow: var(--shadow-card-hover);
+}
+.product-card-shop img, .course-promo-card img, .team-member-card img {
+    transition: transform var(--transition-smooth);
+}
+.product-card-shop:hover img, .course-promo-card:hover img, .team-member-card:hover img {
+    transform: translateZ(20px) scale(1.05);
+}
+.product-card-shop h3, .course-promo-card h3, .team-member-card h3, .testimonial-card-home .author-name, .about-content-card h4 {
+    transition: transform var(--transition-smooth);
+}
+.product-card-shop:hover h3, .course-promo-card:hover h3, .team-member-card:hover h3, .testimonial-card-home:hover .author-name, .about-content-card:hover h4 {
+    transform: translateZ(30px);
+}
+.product-card-shop p, .course-promo-card p, .team-member-card p, .testimonial-card-home p, .about-content-card ul {
+    transition: transform var(--transition-smooth);
+}
+.product-card-shop:hover p, .course-promo-card:hover p, .team-member-card:hover p, .testimonial-card-home:hover .quote, .about-content-card:hover ul {
+    transform: translateZ(15px);
+}
+
+
+/* === About Page === */
+.about-page-content { padding: 80px 0; }
+.about-content-flex { display: flex; gap: 50px; align-items: center; flex-wrap: wrap; }
+.about-image {
+    flex: 1 1 400px; max-width: 480px; border-radius: var(--border-radius-md);
+    box-shadow: var(--shadow-medium); transition: transform var(--transition-smooth), box-shadow var(--transition-smooth);
+}
+.about-image:hover {
+    transform: scale(1.05) perspective(800px) rotateY(5deg);
+    box-shadow: var(--shadow-card-hover);
+}
+.about-text { flex: 1 1 500px; }
+.about-text h3.subtitle { font-size: 1rem; color: var(--color-primary); text-transform: uppercase; margin-bottom: 10px; letter-spacing: 1px; }
+.about-text h1.main-title { font-size: 2.8rem; margin-bottom: 20px; }
+.about-text p { margin-bottom: 20px; font-size: 1.05rem; }
+#mission-vision .row { display: flex; flex-wrap: wrap; gap: 30px; }
+#mission-vision .col-md-6 { flex: 1 1 400px; padding: 20px; background: var(--color-white); border-radius: var(--border-radius-md); box-shadow: var(--shadow-light); }
+
+/* Team Section */
+.team-section .product-grid { gap: 25px; }
+.team-member-card { padding: 30px 20px; }
+.team-member-card img { border: 4px solid var(--color-primary-light); }
+
+
+/* === Services Page (Courses) === */
+.courses-section { padding: 80px 20px; }
+.course-card {
+    display: flex; align-items: center; gap: 35px; margin-bottom: 50px;
+    background-color: var(--color-white); border-radius: var(--border-radius-md);
+    box-shadow: var(--shadow-light); overflow: hidden;
+}
+.course-card:nth-child(even) { flex-direction: row-reverse; }
+.course-card img { width: 48%; height: 320px; object-fit: cover; }
+.course-info { padding: 35px; flex: 1; }
+.course-info h2 { font-size: 2rem; color: var(--color-secondary); }
+.course-info .duration { font-style: italic; color: #777; margin-bottom: 10px; }
+.course-info p { font-size: 0.95rem; }
+#courses-cta .row { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center;} /* Assuming #courses-cta exists */
+#courses-cta .col-md-4 { flex: 1 1 300px; }
+
+
+/* === Shop Page === */
+.shop-section { padding: 80px 20px; }
+.shop-intro { text-align: center; margin-bottom: 50px; }
+.shop-intro .section-title { color: var(--color-secondary); }
+.shop-intro .section-description { font-size: 1.1rem; color: #777; max-width: 700px; margin: 0 auto; }
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 35px;
+}
+.product-card-shop {
+    background-color: var(--color-white); padding: 25px; border-radius: var(--border-radius-md);
+    box-shadow: var(--shadow-light); text-align: center;
+}
+.product-card-shop img { width: 100%; height: 220px; object-fit: cover; border-radius: var(--border-radius-sm); margin-bottom: 15px; }
+.product-card-shop h3 { font-size: 1.4rem; margin-bottom: 8px; }
+.product-card-shop p.price { font-size: 1.2rem; font-weight: bold; color: var(--color-secondary); margin-bottom: 15px; }
+.product-card-shop .btn { background-color: var(--color-primary); } /* Keep primary for main shop action */
+.product-card-shop .btn:hover { background-color: var(--color-primary-dark); }
+
+
+/* === Contact Page === */
+.animated-bg-container { /* For contact page abstract shapes */
+    position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
+    z-index: -2; /* Furthest back */ overflow: hidden;
+    background: linear-gradient(135deg, #e9e0f5 0%, #ddebf0 100%); /* Softer gradient */
+}
+.bg-shape {
+    position: absolute; border-radius: 50%; opacity: 0.08; /* More subtle */
+    animation: floatShapes 25s infinite linear alternate;
+}
+@keyframes floatShapes {
+    0% { transform: translateY(0) translateX(0) scale(0.8) rotate(0deg); }
+    100% { transform: translateY(calc(var(--y-end, 50vh) - 50%)) translateX(calc(var(--x-end, 50vw) - 50%)) scale(1.2) rotate(180deg); }
+}
+
+.contact-page-grid { display: flex; justify-content: space-between; padding: 80px 5%; gap: 50px; flex-wrap: wrap; }
+.contact-details-area { flex: 1 1 400px; }
+.contact-details-area h2 { font-size: 2.2rem; margin-bottom: 15px; }
+.contact-details-area p { margin-bottom: 15px; font-size: 1.05rem;}
+.contact-details-area a { font-weight: 500; }
+.contact-form-area {
+    flex: 1 1 500px; background-color: var(--color-white); padding: 35px;
+    border-radius: var(--border-radius-md); box-shadow: var(--shadow-medium);
+    transform-style: preserve-3d;
+}
+.contact-form-area:hover {
+    transform: perspective(1000px) rotateY(2deg) rotateX(1deg);
+}
+.contact-form-area form { display: flex; flex-direction: column; }
+.contact-form-area label { margin-bottom: 8px; font-size: 0.95rem; font-weight: 500; }
+.contact-form-area input,
+.contact-form-area textarea {
+    margin-bottom: 20px; padding: 14px; border: 1px solid var(--color-border);
+    border-radius: var(--border-radius-sm); background-color: var(--color-input-bg);
+    font-size: 1rem; transition: border-color var(--transition-main), box-shadow var(--transition-main), transform var(--transition-fast);
+}
+.contact-form-area input:focus,
+.contact-form-area textarea:focus {
+    outline: none; border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(177, 151, 125, 0.25);
+    transform: scale(1.01);
+}
+.contact-form-area textarea { resize: vertical; min-height: 130px; }
+.contact-form-area button { font-size: 1.05rem; padding: 14px; }
+.map-section { height: 450px; margin-top: 60px; border-radius: var(--border-radius-md); overflow: hidden; box-shadow: var(--shadow-light);}
+
+
+/* === Philosophy Section (Index Page) === */
+.philosophy-section { background-color: var(--color-secondary-light); }
+.philosophy-content { display: flex; gap: 50px; align-items: center; flex-wrap: wrap; }
+.philosophy-text { flex: 1 1 50%; }
+.philosophy-image { flex: 1 1 40%; text-align: center; perspective: 800px; }
+.philosophy-image img { max-width: 400px; border-radius: var(--border-radius-md); box-shadow: var(--shadow-medium); transition: transform var(--transition-smooth);}
+.philosophy-image:hover img { transform: rotateY(-10deg) rotateX(3deg) scale(1.05); }
+
+/* === Testimonials Section (Index Page) === */
+.testimonials-section { background-color: var(--color-bg); }
+.testimonial-slider { display: flex; overflow-x: auto; gap: 25px; padding: 10px 0 25px 10px; scroll-snap-type: x mandatory; }
+.testimonial-card-home {
+    min-width: 320px; max-width: 350px; background-color: var(--color-white); padding: 30px;
+    border-radius: var(--border-radius-md); box-shadow: var(--shadow-light);
+    text-align: center; scroll-snap-align: start;
+}
+.testimonial-card-home img.author { width: 85px; height: 85px; border-radius: 50%; margin-bottom: 15px; object-fit: cover; border: 3px solid var(--color-primary-light); }
+.testimonial-card-home .quote { font-style: italic; margin-bottom: 12px; font-size: 0.95rem; }
+.testimonial-card-home .author-name { font-weight: 600; color: var(--color-primary); }
+
+/* === Call to Action Section (Index Page) === */
+.cta-home-section {
+    background: linear-gradient(rgba(99, 77, 145, 0.7), rgba(99, 77, 145, 0.85)), url('Untitled design (6).png') no-repeat center center; /* Example relevant image */
+    background-size: cover; background-attachment: fixed;
+    color: var(--color-white); text-align: center; padding: 90px 20px;
+    transform-style: preserve-3d;
+}
+.cta-home-section .container { transform: translateZ(40px); }
+.cta-home-section h2 { color: var(--color-white); margin-bottom: 15px; font-size: 2.6rem;}
+.cta-home-section p { max-width: 600px; margin: 0 auto 30px; font-size: 1.15rem; opacity: 0.95;}
+.cta-home-section .btn { background-color: var(--color-white); color: var(--color-secondary); }
+.cta-home-section .btn:hover { background-color: var(--color-primary); color: var(--color-white); }
+
+
+/* === Footer === */
+.site-footer {
+    background-color: #3a332d; /* Darker, warmer brown */
+    color: #e0e0e0;
+    padding: 60px 0 25px;
+    text-align: center;
+    position: relative; /* For particles */
+}
+.footer-content-wrapper {
+    display: flex; flex-wrap: wrap; justify-content: space-around;
+    gap: 30px; margin-bottom: 35px; text-align: left; position: relative; z-index: 1;
+}
+.footer-column { flex: 1 1 220px; min-width: 200px; }
+.footer-column h4 { color: var(--color-primary); margin-bottom: 18px; font-size: 1.15rem; }
+.footer-column ul li { margin-bottom: 10px; }
+.footer-column ul li a { color: #c0c0c0; font-size: 0.9rem; }
+.footer-column ul li a:hover { color: var(--color-white); padding-left: 5px; }
+.footer-socials { display: flex; gap: 15px; } /* Align with contact page */
+.footer-socials a {
+    color: #c0c0c0; font-size: 1.4rem; display: inline-block;
+    transition: color var(--transition-fast), transform var(--transition-fast);
+}
+.footer-socials a:hover { color: var(--color-primary); transform: scale(1.15) translateY(-2px); }
+.footer-bottom-text { font-size: 0.85rem; color: #b0b0b0; border-top: 1px solid #504840; padding-top: 25px; margin-top: 25px; position: relative; z-index: 1;}
+
+
+/* === Responsive Adjustments === */
+@media (max-width: 992px) { /* Tablet */
+    .section-padding { padding: 70px 0; }
+    .section-title { font-size: 2.5rem; margin-bottom: 40px; }
+    .product-grid { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 25px;}
+    .course-card { gap: 25px; }
+    .course-card img { width: 40%; height: 280px; }
+    .philosophy-content { gap: 30px; }
+    .philosophy-image img { max-width: 350px; }
+}
+
+@media (max-width: 768px) { /* Mobile */
+    .navbar { padding: 15px 20px; }
+    .navbar .logo { font-size: 1.5rem; }
+    .menu-toggle { display: block; }
+    .navbar nav ul {
+        display: none; flex-direction: column; position: absolute;
+        top: calc(100% - 1px); /* Align with bottom of navbar */
+        left: 0; width: 100%; background-color: var(--color-white);
+        padding: 10px 0; box-shadow: var(--shadow-light); z-index: 999;
+    }
+    .navbar nav ul.active { display: flex; }
+    .navbar nav ul li { margin: 10px 0; text-align: center; width: 100%; }
+    .navbar nav ul li a { display: block; padding: 12px; }
+
+    .hero-section-home { height: 80vh; min-height: 450px; }
+    .hero-content-home h1 { font-size: 2.2rem; }
+    .hero-content-home p { font-size: 1rem; }
+    .btn { padding: 12px 25px; font-size: 0.85rem;}
+
+    .section-padding { padding: 60px 0; }
+    .section-title { font-size: 2.2rem; margin-bottom: 30px; }
+    .section-title::after { width:50px; height:2px; margin-top:8px;}
+
+
+    .about-page-content, .courses-section, .shop-section, .contact-page-grid { padding: 60px 15px; }
+    .about-content-flex { flex-direction: column; text-align: center; }
+    .about-image { margin-bottom: 30px; width: 90%; max-width: 300px; }
+    .course-card { flex-direction: column !important; margin-bottom: 30px; }
+    .course-card img { width: 100%; height: 220px; }
+    .course-info { padding: 25px; }
+    .course-info h2 { font-size: 1.6rem; }
+    .product-grid { grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 15px;}
+    .product-card-shop { padding: 20px; }
+    .product-card-shop img { height: 180px; }
+    .product-card-shop h3 { font-size: 1.1rem; }
+    .contact-page-grid { flex-direction: column; gap: 30px; padding: 60px 5%; }
+    .contact-details-area, .contact-form-area { flex-basis: 100%; }
+    .contact-form-area { padding: 25px; }
+
+    .philosophy-content { flex-direction: column; text-align: center; }
+    .philosophy-image { margin-top: 30px; }
+    .philosophy-image img { max-width: 300px; }
+
+    .testimonial-slider { padding: 5px 0 20px 5px; }
+    .testimonial-card-home { min-width: 280px; padding: 20px; }
+
+    .cta-home-section { padding: 60px 15px; }
+    .cta-home-section h2 { font-size: 2rem; }
+    .cta-home-section p { font-size: 1rem; }
+
+    .footer-content-wrapper { flex-direction: column; text-align: center; }
+    .footer-column { margin-bottom: 25px; }
+    .footer-socials { justify-content: center; }
+
+    /* Disable particles on mobile for performance */
+    div[id$="-borcelle-particles"], .particles-js-canvas-el { display: none !important; }
+    .animated-bg-container { display: none; } /* Also hide the old animated bg if present */
+
+    /* Simplify 3D hovers on mobile */
+    .product-card-shop:hover, .course-promo-card:hover, .team-member-card:hover, .testimonial-card-home:hover, .about-content-card:hover,
+    .philosophy-image:hover img, .contact-form-area:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow-light); /* Simpler shadow */
+    }
+    .product-card-shop:hover img, .course-promo-card:hover img, .team-member-card:hover img {
+        transform: scale(1.03);
+    }
+    .product-card-shop:hover h3, .course-promo-card:hover h3, .team-member-card:hover h3, .testimonial-card-home:hover .author-name, .about-content-card:hover h4,
+    .product-card-shop:hover p, .course-promo-card:hover p, .team-member-card:hover p, .testimonial-card-home:hover .quote, .about-content-card:hover ul {
+        transform: none; /* No Z translate for inner elements */
+    }
+    .btn:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-light);
+    }
+}

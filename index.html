@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BORCELLE - Natural Beauty & Wellness</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+    <div class="animated-bg-container" id="global-animated-bg"> <!-- Global for all pages if desired -->
+        <!-- Shapes will be added by JS here -->
+    </div>
+    <header class="navbar">
+        <div class="logo">BORCELLE</div>
+        <button class="menu-toggle" aria-label="Toggle navigation">☰</button>
+        <nav>
+            <ul>
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="services.html">Courses</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero-section-home" data-particle-bg> <!-- Particles for hero -->
+            <div class="hero-content-home container">
+                <h1 data-aos="fade-down" data-aos-duration="1000">Embrace Your Natural Radiance.</h1>
+                <p data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">Discover our range of organic beauty products and empowering wellness courses, crafted with care for you.</p>
+                <a href="shop.html" class="btn" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="400">Shop Collection</a>
+                <a href="services.html" class="btn btn-outline" style="margin-left: 10px;" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="500">Explore Courses</a>
+            </div>
+        </section>
+
+        <section class="philosophy-section section-padding" data-particle-bg> <!-- Particles for this section -->
+            <div class="container philosophy-content">
+                <div class="philosophy-text" data-aos="fade-right">
+                    <h3 class="subtitle" style="color: var(--color-primary);">Our Philosophy</h3>
+                    <h2>Nurturing Beauty, Inside Out.</h2>
+                    <p>At Borcelle, we believe that true beauty stems from a harmonious balance of inner wellness and mindful self-care. Our products are formulated with the purest natural ingredients, and our courses are designed to empower you with knowledge and confidence.</p>
+                    <a href="about.html" class="btn">Learn More About Us</a>
+                </div>
+                <div class="philosophy-image" data-aos="fade-left" data-aos-delay="200">
+                    <img src="Untitled design (2).png" alt="Natural Ingredients">
+                </div>
+            </div>
+        </section>
+
+        <section class="section-padding" style="background-color: var(--color-secondary-light);" data-particle-bg> <!-- Particles for this section -->
+            <div class="container">
+                <h2 class="section-title" data-aos="fade-up">Featured Courses</h2>
+                <div class="product-grid">
+                    <div class="product-card-shop course-promo-card" data-aos="fade-up" data-aos-delay="100">
+                        <img src="Untitled design (11).png" alt="Beauty at Home Course">
+                        <h3>Beauty at Home</h3>
+                        <p class="duration" style="font-size: 0.9rem; color: #777;">A 6-week online journey</p>
+                        <p style="font-size: 0.9rem;">Unlock the secrets to radiant skin and self-care rituals from the comfort of your home.</p>
+                        <a href="services.html#course-beauty" class="btn btn-secondary">Course Details</a>
+                    </div>
+                    <div class="product-card-shop course-promo-card" data-aos="fade-up" data-aos-delay="200">
+                        <img src="Untitled design (2).png" alt="Cosmetology Course">
+                        <h3>Cosmetology Fundamentals</h3>
+                        <p class="duration" style="font-size: 0.9rem; color: #777;">A 4-week intensive online program</p>
+                        <p style="font-size: 0.9rem;">Dive into the world of cosmetology and learn foundational techniques from experts.</p>
+                        <a href="services.html#course-cosmetology" class="btn btn-secondary">Course Details</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-padding" data-particle-bg> <!-- Particles for this section -->
+            <div class="container">
+                <h2 class="section-title" data-aos="fade-up">Featured Products</h2>
+                <div class="product-grid">
+                    <div class="product-card-shop" data-aos="zoom-in-up">
+                        <img src="Untitled design (13).png" alt="Oil Soap">
+                        <h3>Nourishing Oil Soap</h3>
+                        <p class="price">$5.00</p>
+                        <button class="btn">Add to Cart</button>
+                    </div>
+                    <div class="product-card-shop" data-aos="zoom-in-up" data-aos-delay="100">
+                        <img src="Untitled design (14).png" alt="Organic Soap">
+                        <h3>Pure Organic Soap</h3>
+                        <p class="price">$5.00</p>
+                        <button class="btn">Add to Cart</button>
+                    </div>
+                    <div class="product-card-shop" data-aos="zoom-in-up" data-aos-delay="200">
+                        <img src="Untitled design (15).png" alt="Glycerin Soap">
+                        <h3>Hydrating Glycerin Soap</h3>
+                        <p class="price">$5.00</p>
+                        <button class="btn">Add to Cart</button>
+                    </div>
+                    <div class="product-card-shop" data-aos="zoom-in-up" data-aos-delay="300">
+                        <img src="Untitled design (16).png" alt="Olive Oil Soap">
+                        <h3>Rich Olive Oil Soap</h3>
+                        <p class="price">$5.00</p>
+                        <button class="btn">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="text-center" style="margin-top: 40px;" data-aos="fade-up">
+                    <a href="shop.html" class="btn btn-outline">View All Products</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="testimonials-section section-padding" data-particle-bg> <!-- Particles for this section -->
+            <div class="container">
+                <h2 class="section-title" data-aos="fade-up">What Our Community Says</h2>
+                <div class="testimonial-slider" data-aos="fade-up" data-aos-delay="100">
+                    <div class="testimonial-card-home">
+                        <img src="Untitled design (14).png" alt="User 1" class="author">
+                        <p class="quote">"Borcelle's products have transformed my skin! So natural and effective."</p>
+                        <p class="author-name">- Aisha K.</p>
+                    </div>
+                    <div class="testimonial-card-home">
+                        <img src="Untitled design (4).png" alt="User 2" class="author">
+                        <p class="quote">"The 'Beauty at Home' course was incredibly insightful. I feel so much more confident."</p>
+                        <p class="author-name">- Fatima R.</p>
+                    </div>
+                    <div class="testimonial-card-home">
+                        <img src="Untitled design (4).png" alt="User 3" class="author">
+                        <p class="quote">"Finally, a brand that truly cares about natural ingredients and transparency. Love it!"</p>
+                        <p class="author-name">- Zara M.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-home-section" data-particle-bg> <!-- Particles for this section -->
+            <div class="container" data-aos="zoom-in-up">
+                <h2>Ready to Begin Your Journey to Natural Beauty?</h2>
+                <p>Explore our collections or enroll in a course today to discover the Borcelle difference.</p>
+                <a href="contact.html" class="btn">Connect With Us</a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-content-wrapper">
+            <div class="footer-column" data-aos="fade-up">
+                <h4>BORCELLE</h4>
+                <p>Natural beauty, holistic wellness. Crafted with care, inspired by nature.</p>
+            </div>
+            <div class="footer-column" data-aos="fade-up" data-aos-delay="100">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="services.html">Our Courses</a></li>
+                    <li><a href="shop.html">Shop Products</a></li>
+                    <li><a href="contact.html">Contact Support</a></li>
+                    <li><a href="#">FAQs</a></li>
+                </ul>
+            </div>
+            <div class="footer-column" data-aos="fade-up" data-aos-delay="200">
+                <h4>Follow Us</h4>
+                <div class="footer-socials">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest-p"></i></a>
+                </div>
+            </div>
+            <div class="footer-column" data-aos="fade-up" data-aos-delay="300">
+                <h4>Newsletter</h4>
+                <p>Stay updated with our latest news, offers, and wellness tips.</p>
+                <form style="display:flex; margin-top:10px;">
+                    <input type="email" placeholder="Your Email" style="padding:8px; flex-grow:1; border-radius: 3px 0 0 3px; border:none;">
+                    <button type="submit" class="btn" style="border-radius: 0 3px 3px 0; padding: 8px 15px;">Subscribe</button>
+                </form>
+            </div>
+        </div>
+        <div class="container footer-bottom-text">
+            <p>© <span id="currentYear"></span> BORCELLE. All rights reserved. </p>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
